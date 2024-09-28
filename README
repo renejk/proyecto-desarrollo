@@ -1,0 +1,3 @@
+CONTRACTS == interfaces
+domain = modelos
+bussiness = servicios
