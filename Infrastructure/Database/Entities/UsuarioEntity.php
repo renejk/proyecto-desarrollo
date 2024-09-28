@@ -1,0 +1,1 @@
+<!-- la entidad que representa a la tabla  -->
