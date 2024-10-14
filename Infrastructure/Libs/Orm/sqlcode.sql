@@ -1,0 +1,21 @@
+CREATE TABLE User (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  password VARCHAR(255) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(150) NOT NULL,
+  role VARCHAR(50) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  phone VARCHAR(20),
+  status VARCHAR(20) NOT NULL DEFAULT 'active',
+  created_at DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE Event (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  duration FLOAT,
+  attendees INT,
+  event_date DATE NOT NULL,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES User(id)
+);

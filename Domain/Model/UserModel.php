@@ -8,16 +8,16 @@ class UserModel
     private $id;
     private $passWord;
     private $name;
-    private $lastName;
+    private $last_name;
     private $role;
     private $email;
     private $phone;
     private $status;
     private $createdAt;
 
-    public function __construct(string $id, string $passWord, string $name, string $lastName)
+    public function __construct(string $id, string $passWord, string $name, string $last_name)
     {
-        if (empty($id) || empty($name) || empty($lastName) || empty($email)) {
+        if (empty($id) || empty($name) || empty($last_name) || empty($email)) {
             throw new \Exception('El campo no puede estar vacío');
         }
 
@@ -29,7 +29,7 @@ class UserModel
         $this->id = $id;
         $this->passWord = $passWord;
         $this->name = $name;
-        $this->lastName = $lastName;
+        $this->last_name = $last_name;
         $this->email = $email;
 
     
@@ -67,9 +67,9 @@ class UserModel
         return $this->name;
     }
 
-    public function getLastName(): string
+    public function getlast_name(): string
     {
-        return $this->lastName;
+        return $this->last_name;
     }
 
     public function getRole(): string
