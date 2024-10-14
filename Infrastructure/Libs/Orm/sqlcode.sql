@@ -1,3 +1,13 @@
+-- Active: 1728934100171@@127.0.0.1@3306
+CREATE DATABASE events_web
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
+
+
+-- Usar la base de datos recién creada
+USE events_web;
+
+-- Crear la tabla User
 CREATE TABLE User (
   id INT AUTO_INCREMENT PRIMARY KEY,
   password VARCHAR(255) NOT NULL,
@@ -7,9 +17,9 @@ CREATE TABLE User (
   email VARCHAR(255) UNIQUE NOT NULL,
   phone VARCHAR(20),
   status VARCHAR(20) NOT NULL DEFAULT 'active',
-  created_at DATE NOT NULL DEFAULT CURRENT_DATE
-);
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);
 
+-- Crear la tabla Event
 CREATE TABLE Event (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
