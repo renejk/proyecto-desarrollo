@@ -34,15 +34,21 @@ class UserRepository implements IUserReposiory
         }
     }
 
-    public function update(UserModel $userModel): int
+    public function update(UserModel $userModel): void
     {
-        $user = new UserModel(
-            $userModel->getId(),
-            $userModel->getPassWord(),
-            $userModel->getName(),
-            $userModel->getLastName()
-        );
-        return $user->getId();
+        try {
+            $user = UserEntity::find($userModel->getId());
+            $user->password = $userModel->getPassWord();
+            $user->name = $userModel->getName();
+            $user->last_name = $userModel->getLastName();
+            $user->email = $userModel->getEmail();
+            $user->phone = $userModel->getPhone();
+            $user->status = $userModel->getStatus();
+            $user->save();
+        } catch (Exception $e) {
+            $message = 'Usuario con id ' . $userModel->getId() . ' no existe';
+            throw new EntityNotFoundException($message);
+        }
     }
 
     public function getById(string $userId): UserModel
@@ -56,9 +62,15 @@ class UserRepository implements IUserReposiory
         }
     }
 
-    public function delete(string $userId): int
+    public function delete(string $userId): void
     {
-        return 1;
+        try {
+            $userEntity = UserEntity::find($userId);
+            $userEntity->delete();
+        } catch (Exception $e) {
+            $message = 'Usuario con id ' . $userId . ' no existe';
+            throw new EntityNotFoundException($message);
+        }
     }
 
     public function count(): int
@@ -68,6 +80,12 @@ class UserRepository implements IUserReposiory
 
     public function getAll(): array
     {
-        return UserEntity::all();
+        $usersEntityList = UserEntity::all();
+        $usersModelList = [];
+        foreach ($usersEntityList as $userEntity) {
+            $userModel = $userEntity->mapperEntityToModel();
+            $usersModelList[] = $userModel;
+        }
+        return $usersModelList;
     }
 }
