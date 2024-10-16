@@ -51,9 +51,4 @@ class EventModel
     {
         return $this->userId;
     }
-
-    public function setuserId(string $userId): void
-    {
-        $this->userId = $userId;
-    }
 }
