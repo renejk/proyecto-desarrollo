@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Applcation\Exceptions;
 
-class EntityPreExistingException extends \Exception
+class EntityNotFoundException extends \Exception
 {
     public function __construct($message = "", $code = 0, $throwable = null)
     {

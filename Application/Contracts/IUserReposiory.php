@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Applcation\Contracts;
+require_once $_SERVER["DOCUMENT_ROOT"] . "proyectp-desarrollo/Domain/Model/UserModel.php";
 
-include 'App/Domain/Model/UserModel.php';
 
-use App\Domain\Model\UserModel;
-
-interface IUserReposiory 
+interface IUserReposiory
 {
-   
+
     public function create(UserModel $userModel): int;
     public function update(UserModel $userModel): int;
     public function getById(string $userId): UserModel;
     public function delete(string $userId): int;
+    public function count(): int;
+    public function getAll(): array;
 }

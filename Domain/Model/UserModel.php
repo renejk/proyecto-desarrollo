@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Domain\Model;
-
-
-class UserModel 
+class UserModel
 {
     private $id;
     private $passWord;
@@ -31,25 +28,21 @@ class UserModel
         $this->name = $name;
         $this->last_name = $last_name;
         $this->email = $email;
-
-    
     }
 
 
     private function validatePassword(string $passWord): array
     {
-      if (empty($passWord)) {
-        $message = 'La contraseña no puede estar vacía<br>';
-        return ['error' => $message, 'status' => false];
-      }
+        if (empty($passWord)) {
+            $message = 'La contraseña no puede estar vacía<br>';
+            return ['error' => $message, 'status' => false];
+        }
 
-      if (strlen($passWord) <= 12) {
-        $message = 'La contraseña debe tener al menos 12 caracteres<br>';
-        return ['error' => $message, 'status' => false];
-      
-      }
-      return ['error' => 'OK', 'status' => true];
-
+        if (strlen($passWord) <= 12) {
+            $message = 'La contraseña debe tener al menos 12 caracteres<br>';
+            return ['error' => $message, 'status' => false];
+        }
+        return ['error' => 'OK', 'status' => true];
     }
 
     public function getId(): string
@@ -67,7 +60,7 @@ class UserModel
         return $this->name;
     }
 
-    public function getlast_name(): string
+    public function getlastName(): string
     {
         return $this->last_name;
     }
@@ -113,6 +106,4 @@ class UserModel
     {
         $this->createdAt = $createdAt;
     }
-
-  
 }
